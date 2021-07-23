@@ -4,10 +4,6 @@
 
     <property environment="env"/>
 
-    <path id="classpath">
-        <fileset dir="lib" includes="**/*.jar"/>
-    </path>
-	
 	<target name="jdoc" depends="clean, javadoc" description="Main javadoc">
 	    <echo>Building and Archiving the Javadocs</echo>
 	</target>
@@ -56,9 +52,6 @@
 	    <link href="http://docs.oracle.com/javase/7/docs/api/" />
         <link href="http://jd.bukkit.org/apidocs/" />
 
-		<classpath>
-			<fileset dir="lib" includes="**/*.jar"/>
-		</classpath>
 		<bottom>
 			<![CDATA[<b>MilkBowl, 2013</b>]]>
 		</bottom>

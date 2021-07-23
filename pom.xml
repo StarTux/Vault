@@ -4,21 +4,17 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <bukkitVersion>1.13.1-R0.1-SNAPSHOT</bukkitVersion>
-    <mainClass>${project.groupId}.${project.artifactId}</mainClass>
     <api.version>1.7</api.version>
   </properties>
 
   <!-- Project information -->
   <groupId>net.milkbowl.vault</groupId>
   <artifactId>Vault</artifactId>
-  <version>${api.version}.3</version>
+  <version>${api.version}</version>
   <name>Vault</name>
   <url>https://dev.bukkit.org/projects/vault</url>
   <description>Vault is a Permissions &amp; Economy API to allow plugins to more easily hook into these systems without needing to hook each individual system themselves.
   </description>
-
-
 
   <!-- Organization -->
   <organization>
@@ -32,55 +28,43 @@
     <developerConnection>scm:git:git@github.com:MilkBowl/Vault.git</developerConnection>
   </scm>
 
-  <issueManagement>
-    <system>GitHub</system>
-    <url>https://github.com/MilkBowl/Vault/issues</url>
-  </issueManagement>
-
-  <distributionManagement>
-    <repository>
-      <id>pub-repo</id>
-      <name>Public Releases</name>
-      <url>http://nexus.hc.to/content/repositories/pub_releases/</url>
-    </repository>
-    <snapshotRepository>
-      <id>pub-repo</id>
-      <name>Public Snapshots</name>
-      <url>http://nexus.hc.to/content/repositories/pub_snapshots/</url>
-    </snapshotRepository>
-  </distributionManagement>
-
   <repositories>
+
+    <!-- Paper Repo -->
     <repository>
-      <id>pub-repo</id>
-      <name>Public Releases</name>
-      <url>http://nexus.hc.to/content/repositories/pub_releases/</url>
+      <id>papermc</id>
+      <url>https://papermc.io/repo/repository/maven-public/</url>
     </repository>
-    <repository>
-      <id>spigot-repo</id>
-      <url>https://hub.spigotmc.org/nexus/content/groups/public/</url>
-    </repository>
+
     <repository>
       <id>escapecraft-repo</id>
       <url>http://dev.escapecraft.com/maven</url>
     </repository>
+
     <repository>
       <id>codemc-repo</id>
       <url>https://repo.codemc.org/repository/maven-public</url>
     </repository>
+
   </repositories>
 
   <dependencies>
+
+    <!-- Paper API -->
     <dependency>
-      <groupId>org.bukkit</groupId>
-      <artifactId>bukkit</artifactId>
-      <version>${bukkitVersion}</version>
+      <groupId>io.papermc.paper</groupId>
+      <artifactId>paper-api</artifactId>
+      <version>1.17.1-R0.1-SNAPSHOT</version>
+      <scope>provided</scope>
     </dependency>
+
+    <!-- Vault API -->
     <dependency>
       <groupId>net.milkbowl.vault</groupId>
       <artifactId>VaultAPI</artifactId>
       <version>${api.version}</version>
     </dependency>
+
   </dependencies>
 
   <build>
@@ -101,8 +85,8 @@
 	<artifactId>maven-compiler-plugin</artifactId>
 	<version>3.8.0</version>
 	<configuration>
-	  <source>1.8</source>
-	  <target>1.8</target>
+	  <source>16</source>
+	  <target>16</target>
 	</configuration>
       </plugin>
       <plugin>
@@ -114,15 +98,8 @@
 	  <artifactSet>
 	    <includes>
 	      <include>net.milkbowl.vault:VaultAPI</include>
-	      <include>org.bstats</include>
 	    </includes>
 	  </artifactSet>
-	  <relocations>
-	    <relocation>
-	      <pattern>org.bstats</pattern>
-	      <shadedPattern>net.milkbowl.vault.metrics</shadedPattern>
-	    </relocation>
-	  </relocations>
 	</configuration>
 	<executions>
 	  <execution>

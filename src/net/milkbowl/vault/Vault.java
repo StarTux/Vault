@@ -16,7 +16,6 @@
 package net.milkbowl.vault;
 
 import java.util.Collection;
-import java.util.logging.Logger;
 import net.milkbowl.vault.chat.Chat;
 import net.milkbowl.vault.economy.Economy;
 import net.milkbowl.vault.permission.Permission;
@@ -29,9 +28,6 @@ import org.bukkit.plugin.ServicesManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Vault extends JavaPlugin {
-
-    private static final String VAULT_BUKKIT_URL = "https://dev.bukkit.org/projects/Vault";
-    private static Logger log;
     private Permission perms;
     private String newVersionTitle = "";
     private double newVersion = 0;
@@ -50,7 +46,6 @@ public final class Vault extends JavaPlugin {
     @Override
     public void onEnable() {
         plugin = this;
-        log = this.getLogger();
         currentVersionTitle = getDescription().getVersion().split("-")[0];
         currentVersion = Double.valueOf(currentVersionTitle.replaceFirst("\\.", ""));
         sm = getServer().getServicesManager();
@@ -63,7 +58,7 @@ public final class Vault extends JavaPlugin {
 
         getCommand("vault-info").setExecutor(this);
 
-        log.info(String.format("Enabled Version %s", getDescription().getVersion()));
+        getLogger().info(String.format("Enabled Version %s", getDescription().getVersion()));
     }
 
     /**
@@ -72,7 +67,7 @@ public final class Vault extends JavaPlugin {
     private void loadPermission() {
         Permission thePerms = new SuperPerms(this);
         sm.register(Permission.class, thePerms, this, ServicePriority.Lowest);
-        log.info(String.format("[Permission] SuperPermissions loaded as backup permission system."));
+        getLogger().info(String.format("[Permission] SuperPermissions loaded as backup permission system."));
 
         this.perms = sm.getRegistration(Permission.class).getProvider();
     }
