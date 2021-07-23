@@ -13,18 +13,17 @@
    You should have received a copy of the GNU Lesser General Public License
    along with Vault.  If not, see <http://www.gnu.org/licenses/>.
 */
-package net.milkbowl.vault.permission.plugins;
+package net.milkbowl.vault;
 
 import net.milkbowl.vault.permission.Permission;
-
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
-public final class Permission_SuperPerms extends Permission {
+public final class SuperPerms extends Permission {
 
     private final String name = "SuperPerms";
 
-    public Permission_SuperPerms(final Plugin plugin) {
+    public SuperPerms(final Plugin plugin) {
         this.plugin = plugin;
     }
 

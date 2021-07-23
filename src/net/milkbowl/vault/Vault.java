@@ -20,7 +20,6 @@ import java.util.logging.Logger;
 import net.milkbowl.vault.chat.Chat;
 import net.milkbowl.vault.economy.Economy;
 import net.milkbowl.vault.permission.Permission;
-import net.milkbowl.vault.permission.plugins.Permission_SuperPerms;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -71,7 +70,7 @@ public final class Vault extends JavaPlugin {
      * Attempts to load Permission Addons.
      */
     private void loadPermission() {
-        Permission thePerms = new Permission_SuperPerms(this);
+        Permission thePerms = new SuperPerms(this);
         sm.register(Permission.class, thePerms, this, ServicePriority.Lowest);
         log.info(String.format("[Permission] SuperPermissions loaded as backup permission system."));
 
